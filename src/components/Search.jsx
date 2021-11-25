@@ -1,6 +1,6 @@
 import Button from "@restart/ui/esm/Button";
 import React from "react";
-import { FormControl } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
 import Movie from "./Movie";
 
@@ -41,17 +41,19 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <InputGroup className="mb-3">
-                    <FormControl
-                        onChange={this.handleChange}
-                        placeholder="Movie Title"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                    />
-                    <Button onClick={this.handleSearch} variant="outline-secondary" id="button-addon2">
-                        Search
-                    </Button>
-                </InputGroup>
+                <Form onSubmit={this.handleSearch}>
+                    <InputGroup className="mb-3">
+                        <FormControl
+                            onChange={this.handleChange}
+                            placeholder="Movie Title"
+                            aria-label="Recipient's username"
+                            aria-describedby="basic-addon2"
+                        />
+                        <Button type="submit" variant="outline-secondary" id="button-addon2">
+                            Search
+                        </Button>
+                    </InputGroup>
+                </Form>
                 <Movie movie={this.state.movie} />
             </div>
         );
